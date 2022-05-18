@@ -1,0 +1,27 @@
+/*.button {*/
+/*    background-color: lightpink;*/
+/*    padding: 5px;*/
+/*    border-radius: 10px;*/
+/*    margin: 5px;*/
+/*    font-family: Aharoni sans-serif;*/
+/*    font-size: 30px;*/
+/*    color: purple;*/
+/*    border: 2px solid lightpink;*/
+/*}*/
+
+.button {
+    cursor:pointer;
+    font-weight: bold;
+    margin: 10px 15px;
+    width: 70px;
+    height:30px;
+    border-radius: 10px;
+    background: none;
+    color: hotpink;
+    outline: none;
+    border-color: hotpink;
+    font-size: medium;
+}
+.button:disabled {
+    background-color: rgba(108,80,110,0.5);
+}

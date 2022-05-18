@@ -1,0 +1,13 @@
+.counter {
+    padding: 25px;
+    border: 2px solid hotpink;
+    border-radius: 10px;
+    color: hotpink;
+    font-family: Aharoni sans-serif;
+    font-size: 50px;
+    text-align: end;
+}
+
+.redFive {
+    color:red;
+}
