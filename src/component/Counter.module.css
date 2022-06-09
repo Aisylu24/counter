@@ -4,10 +4,19 @@
     border-radius: 10px;
     color: hotpink;
     font-family: Aharoni sans-serif;
-    font-size: 50px;
+    font-size: 35px;
     text-align: end;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.redFive {
-    color:red;
+.redMax {
+    color: red;
+}
+
+
+.text {
+    font-size: 20px;
+    color: red;
+    justify-content: center;
 }

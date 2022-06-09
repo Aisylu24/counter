@@ -5,7 +5,7 @@ import s from './Button.module.css'
 type PropsType = {
     name: string
     callback: () => void
-    disabled: boolean
+    disabled?: boolean
 }
 
 const Button = (props: PropsType) => {

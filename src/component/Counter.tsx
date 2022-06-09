@@ -3,18 +3,30 @@ import s from './Counter.module.css'
 
 
 type PropsType = {
-    value: number
+    counter: number
+    maxValue: number
+    startValue: number
+    editMode: boolean
+    error: string | null
 }
 
 
 const Counter = (props: PropsType) => {
+    // let counterValue
+    // if (props.maxValue <= props.startValue)
+    //     counterValue = 'incorrect values'
+    // if (props.counter == null)
+    //     counterValue = 'set values'
+    // if (props.maxValue > props.startValue)
+    //     counterValue = props.counter
 
-   //   let finalClass = s.tablo + ' ' + (props.value === 5 ? s.redFive : '')
-    // let finalClass = `${props.value === 5 ? `s.tablo s.redFive` : `s.tablo`}`
-    let finalClass = `${s.counter}  ${props.value === 5 && s.redFive}`
+    console.log('counter')
+    let finalClass = `${s.counter}  ${(props.counter === props.maxValue && s.redMax) || ((props.error || props.editMode) && s.text)}`
+    console.log('error',props.error,'edit', props.editMode,'counter',props.counter)
 
+    let finalValue = props.error? props.error : props.editMode ? 'set values' : props.counter
     return (
-        <div className={finalClass}>{props.value}</div>
+        <div className={finalClass}>{finalValue}</div>
     );
 };
 

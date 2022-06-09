@@ -1,33 +1,79 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Scoreboard} from "./component/Scoreboard";
-
+import Setter from "./component/Setter";
 
 function App() {
 
-    let startValue = 0
-    let maxValue = 5
+    let [startValue, setStartValue] = useState<number>(0)
+    let [maxValue, setMaxValue] = useState<number>(5)
 
-    let [counter, setCounter] = useState(0)
+    let [counter, setCounter] = useState<number>(0)
 
+    let [error, setError] = useState<string | null>(null)
+    let [editMode, setEdit] = useState<boolean>(false)
+
+    useEffect(() => {
+        console.log('useeef')
+        if (+startValue >= +maxValue) {
+            setError('incorrect values')
+        } else {
+            setError(null)
+        }
+
+    }, [startValue, maxValue])
+
+    const setValues = () => {
+        console.log('setValues')
+        setEdit(false)
+        setCounter(startValue)
+
+    }
+
+    const setStart = (startValue: number) => {
+        !editMode && setEdit(true)
+        setStartValue(startValue)
+
+    }
+
+    const setMax = (maxValue: number) => {
+        !editMode && setEdit(true)
+        setMaxValue(maxValue)
+    }
 
     const Inc = () => {
-        setCounter(++counter)
+        if (+maxValue > counter)
+            setCounter(++counter)
     }
 
     const Reset = () => {
-        setCounter(0)
+        if (+maxValue > +startValue)
+            setCounter(startValue)
     }
 
     return (
         <div className="App-header">
-           <Scoreboard
-            Inc={Inc}
-            Reset={Reset}
-            value={counter}
-            startValue={startValue}
-            maxValue={maxValue}
-           />
+            <Setter
+                counter={counter}
+                onClick={setValues}
+                setCounter={setCounter}
+                setStart={setStart}
+                setMax={setMax}
+                startValue={startValue}
+                maxValue={maxValue}
+                editMode={editMode}
+                error={error}
+
+            />
+            <Scoreboard
+                editMode={editMode}
+                Inc={Inc}
+                Reset={Reset}
+                counter={counter}
+                startValue={startValue}
+                maxValue={maxValue}
+                error={error}
+            />
         </div>
     );
 }

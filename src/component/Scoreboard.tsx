@@ -1,29 +1,36 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Counter from "./Counter";
 import Button from "./Button";
 import s from './Scoreboard.module.css'
 
 export type ScoreboardPropsType = {
-    value: number
+    counter: number
     Inc: () => void
     Reset: () => void
     startValue: number
     maxValue: number
+    editMode: boolean
+    error: string | null
 }
 
 
 export const Scoreboard: React.FC<ScoreboardPropsType> =
-    ({value, Inc, Reset, startValue, maxValue}) => {
+    ({counter, Inc, Reset, startValue, maxValue,editMode,error}) => {
         return (
             <div className={s.scoreboard}>
                 <div className={s.counter}>
-                    <Counter value={value}/>
+                    <Counter counter={counter}
+                             maxValue={maxValue}
+                             startValue={startValue}
+                             editMode={editMode}
+                             error={error}
+                    />
                 </div>
                 <div className={s.buttons}>
                     <Button name={'inc'} callback={Inc}
-                            disabled={value === maxValue}/>
+                            disabled={counter === maxValue}/>
                     <Button name={'reset'} callback={Reset}
-                            disabled={value === startValue}/>
+                            disabled={counter === startValue}/>
                 </div>
             </div>
         );

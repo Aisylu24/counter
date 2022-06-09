@@ -12,6 +12,9 @@
 .button {
     cursor:pointer;
     font-weight: bold;
+    font-size: medium;
+    font-style: normal;
+    font-family: sans-serif;
     margin: 10px 15px;
     width: 70px;
     height:30px;
@@ -20,7 +23,6 @@
     color: hotpink;
     outline: none;
     border-color: hotpink;
-    font-size: medium;
 }
 .button:disabled {
     background-color: rgba(108,80,110,0.5);
