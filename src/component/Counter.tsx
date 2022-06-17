@@ -21,8 +21,7 @@ const Counter = (props: PropsType) => {
     //     counterValue = props.counter
 
     console.log('counter')
-    let finalClass = `${s.counter}  ${(props.counter === props.maxValue && s.redMax) || ((props.error || props.editMode) && s.text)}`
-    console.log('error',props.error,'edit', props.editMode,'counter',props.counter)
+    let finalClass = `${s.counter}  ${(props.counter === props.maxValue ? s.redMax : '') || ((props.error || props.editMode)? s.text : '')}`
 
     let finalValue = props.error? props.error : props.editMode ? 'set values' : props.counter
     return (

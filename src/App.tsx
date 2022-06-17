@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Scoreboard} from "./component/Scoreboard";
 import Setter from "./component/Setter";
+import SuperCounter from "./component/SuperCounter";
 
 function App() {
 
@@ -56,7 +57,6 @@ function App() {
             <Setter
                 counter={counter}
                 onClick={setValues}
-                setCounter={setCounter}
                 setStart={setStart}
                 setMax={setMax}
                 startValue={startValue}
@@ -73,6 +73,8 @@ function App() {
                 startValue={startValue}
                 maxValue={maxValue}
                 error={error}
+            />
+            <SuperCounter
             />
         </div>
     );

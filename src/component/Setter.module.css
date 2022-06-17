@@ -45,3 +45,7 @@
     font-family: sans-serif;
 
 }
+
+.redInput {
+    background-color: rgba(108,80,110,0.5);
+}

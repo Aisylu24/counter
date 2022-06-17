@@ -1,0 +1,13 @@
+.superCounter {
+    padding: 10px;
+    border: 2px solid hotpink;
+    border-radius: 10px;
+    width: 200px;
+    height: 160px;
+}
+
+
+.buttons  {
+    display: flex;
+    flex-direction: row;
+}
