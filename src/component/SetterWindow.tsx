@@ -12,7 +12,7 @@ export type SetterWindowPropsType = {
 
 const SetterWindow = (props: SetterWindowPropsType) => {
 
-    let finalClass = `${s.input} ${(props.startValue >= props.maxValue ? s.redInput : '')}`
+    let finalClass = `${s.input} ${((props.startValue >= props.maxValue || props.startValue < 0 || props.maxValue < 0) ? s.redInput : '')}`
 
     return (
         <div>

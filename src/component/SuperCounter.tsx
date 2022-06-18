@@ -26,7 +26,19 @@ const SuperCounter = () => {
     let [editMode, setEdit] = useState<boolean>(false)
 
     useEffect(() => {
-        if (+startValue >= +maxValue) {
+        let maxString = localStorage.getItem('max')
+        let startString = localStorage.getItem('start')
+        if ( maxString && startString) {
+            let newMax = JSON.parse(maxString)
+            let newStart = JSON.parse(startString)
+            setMax(newMax)
+            setStart(newStart)
+        }
+
+    }, [])
+
+    useEffect(() => {
+        if (startValue >= maxValue) {
             setError('incorrect values')
         } else {
             setError(null)
@@ -35,29 +47,31 @@ const SuperCounter = () => {
 
     const setValues = () => {
         setEdit(!editMode)
-        setCounter(startValue)
+        setCounter(+startValue)
+        localStorage.setItem('max', JSON.stringify(maxValue))
+        localStorage.setItem('start', JSON.stringify(startValue))
 
     }
 
     const setStart = (startValue: number) => {
         !editMode && setEdit(true)
-        setStartValue(startValue)
+        setStartValue(+startValue)
 
     }
 
     const setMax = (maxValue: number) => {
         !editMode && setEdit(true)
-        setMaxValue(maxValue)
+        setMaxValue(+maxValue)
     }
 
     const Inc = () => {
-        if (+maxValue > counter)
+        if (maxValue > counter)
             setCounter(++counter)
     }
 
     const Reset = () => {
-        if (+maxValue > +startValue)
-            setCounter(startValue)
+        if (maxValue > startValue)
+            setCounter(+startValue)
     }
 
     return (
@@ -81,12 +95,12 @@ const SuperCounter = () => {
                 }
                 <div className={s.buttons}>
                     <Button name={'set'} callback={setValues}
-                            disabled={!!error}
+                            disabled={!!error || startValue < 0 || maxValue < 0}
                     />
                     <Button name={'inc'} callback={Inc}
-                            disabled={counter === maxValue}/>
+                            disabled={counter === maxValue || startValue < 0 || maxValue < 0}/>
                     <Button name={'reset'} callback={Reset}
-                            disabled={counter === startValue}/>
+                            disabled={counter === startValue || startValue < 0 || maxValue < 0}/>
                 </div>
             </div>
         </div>
