@@ -12,15 +12,7 @@ type PropsType = {
 
 
 const Counter = (props: PropsType) => {
-    // let counterValue
-    // if (props.maxValue <= props.startValue)
-    //     counterValue = 'incorrect values'
-    // if (props.counter == null)
-    //     counterValue = 'set values'
-    // if (props.maxValue > props.startValue)
-    //     counterValue = props.counter
-
-    console.log('counter')
+    console.log(props.maxValue, props.counter)
     let finalClass = `${s.counter}  ${(props.counter === props.maxValue ? s.redMax : '') || ((props.error || props.editMode)? s.text : '')}`
 
     let finalValue = props.error? props.error : props.editMode ? 'set values' : props.counter

@@ -22,7 +22,7 @@ const SetterWindow = (props: SetterWindowPropsType) => {
                     >start value</span>
                     <input className={finalClass} type={"number"}
                            value={props.startValue}
-                           onChange={e => props.setStart(e.currentTarget.value)}
+                           onChange={e => props.setStart(+e.currentTarget.value)}
                     />
                 </label>
                 <label>
@@ -30,7 +30,7 @@ const SetterWindow = (props: SetterWindowPropsType) => {
                     >max value</span>
                     <input className={finalClass} type={"number"}
                            value={props.maxValue}
-                           onChange={e => props.setMax(e.currentTarget.value)}
+                           onChange={e => props.setMax(+e.currentTarget.value)}
                     />
                 </label>
             </div>

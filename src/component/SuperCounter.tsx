@@ -4,20 +4,6 @@ import SetterWindow from "./SetterWindow";
 import s from "./SuperCounter.module.css";
 import Counter from "./Counter";
 
-// export type SuperCounterPropsType = {
-//     setCounter: (startValue: any) => void
-//     setStart: (startValue: any) => void
-//     setMax: (maxValue: any) => void
-//     startValue: number
-//     maxValue: number
-//     onClick: () => void
-//     editMode: boolean
-//     error: string | null
-//     counter: number
-//     Inc: () => void
-//     Reset: () => void
-// }
-
 const SuperCounter = () => {
     let [startValue, setStartValue] = useState<number>(0)
     let [maxValue, setMaxValue] = useState<number>(5)
@@ -55,8 +41,7 @@ const SuperCounter = () => {
 
     const setStart = (startValue: number) => {
         !editMode && setEdit(true)
-        setStartValue(+startValue)
-
+        setStartValue(startValue)
     }
 
     const setMax = (maxValue: number) => {

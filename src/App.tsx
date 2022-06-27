@@ -15,8 +15,7 @@ function App() {
     let [editMode, setEdit] = useState<boolean>(false)
 
     useEffect(() => {
-        console.log('useeef')
-        if (+startValue >= +maxValue) {
+        if (startValue >= maxValue || startValue < 0 || maxValue < 0 ) {
             setError('incorrect values')
         } else {
             setError(null)
@@ -25,7 +24,6 @@ function App() {
     }, [startValue, maxValue])
 
     const setValues = () => {
-        console.log('setValues')
         setEdit(false)
         setCounter(startValue)
 
@@ -39,16 +37,16 @@ function App() {
 
     const setMax = (maxValue: number) => {
         !editMode && setEdit(true)
-        setMaxValue(maxValue)
+        setMaxValue(+maxValue)
     }
 
     const Inc = () => {
-        if (+maxValue > counter)
+        if (maxValue > counter)
             setCounter(++counter)
     }
 
     const Reset = () => {
-        if (+maxValue > +startValue)
+        if (maxValue > startValue)
             setCounter(startValue)
     }
 

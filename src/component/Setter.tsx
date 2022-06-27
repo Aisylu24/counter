@@ -23,7 +23,7 @@ const Setter = (props: SetterPropsType) => {
                 startValue={props.startValue}
             />
             <Button name={'set'} callback={props.onClick}
-                    disabled={!props.editMode || !!props.error}
+                    disabled={!props.editMode || !!props.error || props.startValue < 0 || props.maxValue < 0}
             />
         </div>
     );
