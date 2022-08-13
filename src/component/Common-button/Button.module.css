@@ -20,10 +20,10 @@
     height:30px;
     border-radius: 10px;
     background: none;
-    color: hotpink;
+    color:  rgb(29, 53, 161);
     outline: none;
-    border-color: hotpink;
+    border-color:  rgb(29, 53, 161);
 }
 .button:disabled {
-    background-color: rgba(108,80,110,0.5);
+    background-color: rgba(29, 53, 161, 0.2);
 }

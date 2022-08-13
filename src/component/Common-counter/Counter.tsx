@@ -13,7 +13,7 @@ type PropsType = {
 
 const Counter = (props: PropsType) => {
     console.log(props.maxValue, props.counter)
-    let finalClass = `${s.counter}  ${(props.counter === props.maxValue ? s.redMax : '') || ((props.error || props.editMode)? s.text : '')}`
+    let finalClass = `${((props.error || props.editMode)? s.text : '')}  ${s.counter}  ${(props.counter === props.maxValue ? s.redMax : '')}`
 
     let finalValue = props.error? props.error : props.editMode ? 'set values' : props.counter
     return (

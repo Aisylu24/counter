@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import {Scoreboard} from "./component/Scoreboard";
-import Setter from "./component/Setter";
-import SuperCounter from "./component/SuperCounter";
+import {Scoreboard} from "./component/Scoreboard/Scoreboard";
+import Setter from "./component/Common-setter/Setter";
+import SuperCounter from "./component/SuperCounter/SuperCounter";
 
 function App() {
 

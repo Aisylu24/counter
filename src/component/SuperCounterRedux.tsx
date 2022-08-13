@@ -1,62 +1,70 @@
 import React, {useEffect, useState} from 'react';
-import Button from "./Button";
-import SetterWindow from "./SetterWindow";
-import s from "./SuperCounter.module.css";
-import Counter from "./Counter";
+import Button from "./Common-button/Button";
+import SetterWindow from "./Common-setter/SetterWindow";
+import s from "./SuperCounter/SuperCounter.module.css";
+import Counter from "./Common-counter/Counter";
+import {incAC, resetAC, setErrorAC, setMaxAC, setStartAC, setValuesAC, ValuesType} from "../state/values-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../state/store";
 
 const SuperCounter = () => {
-    let [startValue, setStartValue] = useState<number>(0)
-    let [maxValue, setMaxValue] = useState<number>(5)
-    let [counter, setCounter] = useState<number>(0)
-    let [error, setError] = useState<string | null>(null)
-    let [editMode, setEdit] = useState<boolean>(false)
+
+    const startValue = useSelector<AppRootStateType, number>(state => state.values.startValue)
+    const maxValue = useSelector<AppRootStateType, number>(state => state.values.maxValue)
+    const counter = useSelector<AppRootStateType, number>(state => state.values.counter)
+    const error = useSelector<AppRootStateType, string | null>(state => state.values.error)
+    const editMode = useSelector<AppRootStateType, boolean>(state => state.values.editMode)
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
+        console.log('eff')
         let maxString = localStorage.getItem('max')
         let startString = localStorage.getItem('start')
-        if ( maxString && startString) {
+        if (maxString && startString) {
             let newMax = JSON.parse(maxString)
             let newStart = JSON.parse(startString)
-            setMax(newMax)
-            setStart(newStart)
+            dispatch(setMaxAC(newMax))
+            dispatch(setStartAC(newStart))
         }
 
     }, [])
 
     useEffect(() => {
         if (startValue >= maxValue) {
-            setError('incorrect values')
+            dispatch(setErrorAC('incorrect values'))
         } else {
-            setError(null)
+            dispatch(setErrorAC(null))
         }
     }, [startValue, maxValue])
 
     const setValues = () => {
-        setEdit(!editMode)
-        setCounter(+startValue)
         localStorage.setItem('max', JSON.stringify(maxValue))
         localStorage.setItem('start', JSON.stringify(startValue))
-
+        dispatch(setValuesAC(editMode, startValue, maxValue))
     }
 
     const setStart = (startValue: number) => {
-        !editMode && setEdit(true)
-        setStartValue(startValue)
+        // !editMode && setEdit(true)
+        // setStartValue(startValue)
+        dispatch(setStartAC(startValue))
+
     }
 
     const setMax = (maxValue: number) => {
-        !editMode && setEdit(true)
-        setMaxValue(+maxValue)
+        // !editMode && setEdit(true)
+        // setMaxValue(+maxValue)
+        dispatch(setMaxAC(maxValue))
     }
 
     const Inc = () => {
-        if (maxValue > counter)
-            setCounter(++counter)
+        if (maxValue > counter) {
+            dispatch(incAC())
+        }
     }
 
     const Reset = () => {
-        if (maxValue > startValue)
-            setCounter(+startValue)
+        dispatch(resetAC())
     }
 
     return (

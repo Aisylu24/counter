@@ -1,8 +1,8 @@
 .counter {
     padding: 30px;
-    border: 2px solid hotpink;
+    border: 2px solid  rgb(29, 53, 161);
     border-radius: 10px;
-    color: hotpink;
+    color:  rgb(29, 53, 161);
     font-family: Aharoni sans-serif;
     font-size: 35px;
     text-align: end;

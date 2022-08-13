@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from "./Button";
+import Button from "../Common-button/Button";
 import SetterWindow from "./SetterWindow";
 import s from "./Setter.module.css";
 
