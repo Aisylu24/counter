@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Scoreboard} from "./component/Scoreboard/Scoreboard";
 import Setter from "./component/Common-setter/Setter";
-import SuperCounter from "./component/SuperCounter/SuperCounter";
+import SuperCounterRedux from "./component/SuperCounterRedux";
 
 function App() {
 
@@ -72,7 +72,7 @@ function App() {
                 maxValue={maxValue}
                 error={error}
             />
-            <SuperCounter
+            <SuperCounterRedux
             />
         </div>
     );

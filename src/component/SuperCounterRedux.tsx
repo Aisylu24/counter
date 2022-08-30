@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Button from "./Common-button/Button";
 import SetterWindow from "./Common-setter/SetterWindow";
 import s from "./SuperCounter/SuperCounter.module.css";
 import Counter from "./Common-counter/Counter";
-import {incAC, resetAC, setErrorAC, setMaxAC, setStartAC, setValuesAC, ValuesType} from "../state/values-reducer";
+import {incAC, resetAC, setErrorAC, setMaxAC, setStartAC, setValuesAC} from "../state/values-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../state/store";
 
@@ -18,19 +18,6 @@ const SuperCounter = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log('eff')
-        let maxString = localStorage.getItem('max')
-        let startString = localStorage.getItem('start')
-        if (maxString && startString) {
-            let newMax = JSON.parse(maxString)
-            let newStart = JSON.parse(startString)
-            dispatch(setMaxAC(newMax))
-            dispatch(setStartAC(newStart))
-        }
-
-    }, [])
-
-    useEffect(() => {
         if (startValue >= maxValue) {
             dispatch(setErrorAC('incorrect values'))
         } else {
@@ -39,21 +26,15 @@ const SuperCounter = () => {
     }, [startValue, maxValue])
 
     const setValues = () => {
-        localStorage.setItem('max', JSON.stringify(maxValue))
-        localStorage.setItem('start', JSON.stringify(startValue))
         dispatch(setValuesAC(editMode, startValue, maxValue))
     }
 
     const setStart = (startValue: number) => {
-        // !editMode && setEdit(true)
-        // setStartValue(startValue)
         dispatch(setStartAC(startValue))
 
     }
 
     const setMax = (maxValue: number) => {
-        // !editMode && setEdit(true)
-        // setMaxValue(+maxValue)
         dispatch(setMaxAC(maxValue))
     }
 
